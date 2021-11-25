@@ -1,4 +1,3 @@
-#include <iostream>
 #include "student.h"
 using namespace std;
 
@@ -14,18 +13,18 @@ void Student::openMenu(){
 
 }
 
-void applyOrder(){
+void Student::applyOrder(){
 
 }
 
-void showOrder(){
+void Student::showOrder(){
 
 }
 
-void showAllOrder(){
+void Student::showAllOrder(){
 
 }
 
-void cancelOrder(){
+void Student::cancelOrder(){
 
 }

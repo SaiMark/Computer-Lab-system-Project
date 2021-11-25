@@ -3,12 +3,14 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
+#include "student.h"
+#include "teacher.h"
+#include "admin.h"
+
 using namespace std;
 void LoginIn(string fileName, int type){
 
-	Identity * person = NULL;
+	Identity* person = NULL;
 
 	ifstream ifs;
 	ifs.open(fileName,ios::in);
@@ -45,6 +47,21 @@ void LoginIn(string fileName, int type){
 	if(type == 1)
 	{
 		//Student Login check
+		int fId;
+		string fName;
+		string fPwd;
+		while(ifs>>fId && ifs>>fName && ifs>>fPwd)
+		{
+			if(id == fId && name == fName && pwd == fPwd)
+			{
+				cout<<"Login Successful!"<<endl;
+				system("pause");
+				system("cls");
+				person = new Student(id, name, pwd);
+
+				return ;
+			}
+		}
 	}
 	else if (type == 2)
 	{
