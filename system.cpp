@@ -12,6 +12,7 @@ void LoginIn(string fileName, int type){
 
 	Identity* person = NULL;
 
+	//Reading information from txt file
 	ifstream ifs;
 	ifs.open(fileName,ios::in);
 
@@ -21,9 +22,9 @@ void LoginIn(string fileName, int type){
 		return;
 	}
 
-	int id = 0;
-	string name;
-	string pwd;
+	int id = 0;//User ID
+	string name;//User name variable
+	string pwd;//User name variable
 
 	if(type==1)
 	{
@@ -37,6 +38,7 @@ void LoginIn(string fileName, int type){
 		cin>>id;
 	}
 
+
 	cout<<"Please enter user name: ";
 	cin>>name;
 	cout<<endl;
@@ -47,17 +49,18 @@ void LoginIn(string fileName, int type){
 	if(type == 1)
 	{
 		//Student Login check
-		int fId;
-		string fName;
-		string fPwd;
+		int fId;//Student Id read from txt file
+		string fName;//Student name read from txt file
+		string fPwd;//Student password read from txt file
 		while(ifs>>fId && ifs>>fName && ifs>>fPwd)
 		{
 			if(id == fId && name == fName && pwd == fPwd)
 			{
-				cout<<"Login Successful!"<<endl;
+				cout<<"Student Login Successful!"<<endl;
 				system("pause");
 				system("cls");
 				person = new Student(id, name, pwd);
+
 
 				return ;
 			}
@@ -66,6 +69,23 @@ void LoginIn(string fileName, int type){
 	else if (type == 2)
 	{
 		//Teacher Login check
+		//Teacher Login check
+		int fId;//Teacher Id read from txt file
+		string fName;//Teacher name read from txt file
+		string fPwd;//Teacher password read from txt file
+		while(ifs>>fId && ifs>>fName && ifs>>fPwd)
+		{
+			if(id == fId && name == fName && pwd == fPwd)
+			{
+				cout<<"Teacher Login Successful!"<<endl;
+				system("pause");
+				system("cls");
+				person = new Teacher(id, name, pwd);
+
+				
+				return ;
+			}
+		}
 	}
 	else if(type == 3)
 	{
