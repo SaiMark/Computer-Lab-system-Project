@@ -8,6 +8,50 @@
 #include "admin.h"
 
 using namespace std;
+void adminMenu(Identity* &manager)
+{
+	while(true)
+	{
+		manager->openMenu();
+
+		Admin* man = (Admin*)manager;
+		int select = 0;
+
+		cin>>select;
+
+		if(select == 1)
+		{
+			cout<<"Add Account"<<endl;
+			man->addPerson();
+		}
+
+		else if(select == 2){
+			cout<<"Check Account"<<endl;
+			man->showPerson();
+		}
+
+		else if(select == 3){
+			cout<<"Check Lab"<<endl;
+			man->showComputer();
+		}
+
+		else if(select == 4){
+			cout<<"Check Account"<<endl;
+			man->cleanFile();
+		}
+
+		else{
+			delete manager;
+			cout<<"Logout Successful"<<endl;
+			system("pause");
+			system("clear");
+			return;
+
+		}
+	}
+
+}
+
 void LoginIn(string fileName, int type){
 
 	Identity* person = NULL;
@@ -41,7 +85,6 @@ void LoginIn(string fileName, int type){
 
 	cout<<"Please enter user name: ";
 	cin>>name;
-	cout<<endl;
 
 	cout<<"Please enter password: ";
 	cin>>pwd;
@@ -58,7 +101,7 @@ void LoginIn(string fileName, int type){
 			{
 				cout<<"Student Login Successful!"<<endl;
 				system("pause");
-				system("cls");
+				system("clear");
 				person = new Student(id, name, pwd);
 
 
@@ -79,10 +122,9 @@ void LoginIn(string fileName, int type){
 			{
 				cout<<"Teacher Login Successful!"<<endl;
 				system("pause");
-				system("cls");
+				system("clear");
 				person = new Teacher(id, name, pwd);
 
-				
 				return ;
 			}
 		}
@@ -90,12 +132,27 @@ void LoginIn(string fileName, int type){
 	else if(type == 3)
 	{
 		//Admin Login check
+		string fName;
+		string fPwd;
+		while(ifs>>fName && ifs>>fPwd){
+			if(name == fName && fPwd == pwd){
+				cout<<"Admin Login Successful"<<endl;
+				//After login 
+				system("pause");
+				system("clear");
+				person = new Admin(name,pwd);
+
+				//Into the menu
+				adminMenu(person);
+				return ;
+			}
+		}
 	}
 
 	cout<< "Check Login failed" <<endl;
 
 	system("pause");
-	system("cls");
+	system("clear");
 	return;
 
 

@@ -14,6 +14,9 @@ class Admin:public Identity{
 		//menu page
 		virtual void openMenu();
 		
+		//Create Account
+		void addPerson();
+		
 		//check all information account
 		void showPerson();
 
