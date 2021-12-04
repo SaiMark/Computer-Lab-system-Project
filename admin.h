@@ -13,6 +13,9 @@ class Admin:public Identity{
 
 		//menu page
 		virtual void openMenu();
+
+		//Check repeat item
+		bool checkRepeat(int id, int type);
 		
 		//Create Account
 		void addPerson();
@@ -25,5 +28,6 @@ class Admin:public Identity{
 
 		//Clean appointment record
 		void cleanFile();
+
 };
 #endif

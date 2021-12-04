@@ -1,6 +1,9 @@
 #include "globalFile.h"
 #include "admin.h"
+#include "student.h"
+#include "teacher.h"
 #include <iostream>
+#include <vector>
 #include <fstream>
 #include <string>
 using namespace std;
@@ -17,6 +20,33 @@ Admin::Admin(std::string name, std::string pwd){
 	this->m_Name=name;
 }
 
+//CheckRepeat
+bool Admin::checkRepeat(int id, int type){
+
+	// if(type == 1)
+	// {
+	// 	for(vector<Student>::iterator it = vStu.begin(); it!=vStu.end(); it++)
+	// 	{
+	// 		if(id == it->m_Id)
+	// 		{
+	// 			return true;
+	// 		}
+	// 	}
+
+	// 	else{
+	// 		for(vector<Teacher>::iterator it = vTea.begin(); it!=vTea.end();it++)
+	// 		{
+	// 			if(id == it->m_EmpId)
+	// 			{
+	// 				return true;
+	// 			}
+	// 		}
+	// 	}
+	// }
+
+	return false;
+}
+
 //Create new account
 void Admin::addPerson(){
 
@@ -31,14 +61,19 @@ void Admin::addPerson(){
 	int select = 0;
 	cin>>select;
 
+	string errorTip;
+
+
 	if(select == 1){
 		fileName = STUDENT_FILE;
 		tip = "Please enter student id: ";
+		errorTip = "ID repeated, please enter again";
 	}
 
 	else if(select == 2){
 		fileName = TEACHER_FILE;
 		tip = "Please enter teacher id: ";
+		errorTip = "ID repeated, please enter again";
 	}
 
 	else{
@@ -50,8 +85,22 @@ void Admin::addPerson(){
 	string name;
 	string pwd;
 	cout<<tip<<endl;
-	cin>>id;
 	
+	// while(true)
+	// {
+	// 	cin>>id;
+
+	// 	bool ret = this->checkRepeat(id, select);
+
+	// 	if(ret)
+	// 	{
+	// 		cout<<errorTip<<endl;
+	// 	}
+	// 	else{
+	// 		break;
+	// 	}
+	// }
+
 	cout<<"Input user name: "<<endl;
 	cin>>name;
 	cout<<"Input user password: "<<endl;
