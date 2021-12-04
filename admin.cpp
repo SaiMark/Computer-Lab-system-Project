@@ -1,5 +1,7 @@
+#include "globalFile.h"
 #include "admin.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -17,6 +19,51 @@ Admin::Admin(std::string name, std::string pwd){
 
 //Create new account
 void Admin::addPerson(){
+
+	cout<<"Please enter account type"<<endl;
+	cout<<"1, add new Studnet account"<<endl;
+	cout<<"2, add new Teacher account"<<endl;
+
+	string fileName;
+	string tip;
+	ofstream ofs;
+
+	int select = 0;
+	cin>>select;
+
+	if(select == 1){
+		fileName = STUDENT_FILE;
+		tip = "Please enter student id: ";
+	}
+
+	else if(select == 2){
+		fileName = TEACHER_FILE;
+		tip = "Please enter teacher id: ";
+	}
+
+	else{
+		cout<<"Sorry, error input"<<endl;
+	}
+
+	ofs.open(fileName, ios::out | ios::app);
+	int id;
+	string name;
+	string pwd;
+	cout<<tip<<endl;
+	cin>>id;
+	
+	cout<<"Input user name: "<<endl;
+	cin>>name;
+	cout<<"Input user password: "<<endl;
+	cin>>pwd;
+
+	ofs<<id<<" "<<name<<" "<<pwd<<" "<<endl;
+	cout<<"Create new account successful!!"<<endl;
+
+	system("clear");
+
+	ofs.close();
+
 
 }
 
